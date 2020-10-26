@@ -2,4 +2,4 @@
 *.log
 .vscode
 .cph
-.cpp.bin
+*.cpp.bin

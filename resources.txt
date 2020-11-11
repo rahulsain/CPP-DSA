@@ -1,0 +1,6 @@
+This file contain resources for the questions that are given in the notes section and somehow not opening:
+
+
+Lecture No                            |                         Link
+13. Pointers-MCQs                     | https://www.geeksforgeeks.org/c-language-2-gq/pointers-gq/ 
+14. Dynamic Memory Allocation-MCQs    | https://www.geeksforgeeks.org/c-language-2-gq/dynamic-memory-allocation-gq/  

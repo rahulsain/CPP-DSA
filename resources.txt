@@ -3,4 +3,5 @@ This file contain resources for the questions that are given in the notes sectio
 
 Lecture No                            |                         Link
 13. Pointers-MCQs                     | https://www.geeksforgeeks.org/c-language-2-gq/pointers-gq/ 
-14. Dynamic Memory Allocation-MCQs    | https://www.geeksforgeeks.org/c-language-2-gq/dynamic-memory-allocation-gq/  
+14. Dynamic Memory Allocation-MCQs    | https://www.geeksforgeeks.org/c-language-2-gq/dynamic-memory-allocation-gq/
+17. Sieve of Eratosthenes- Question   | https://leetcode.com/problems/count-primes/  

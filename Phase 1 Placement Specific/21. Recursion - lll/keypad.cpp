@@ -2,21 +2,25 @@
 
 using namespace std;
 
-void subseq(string s,string ans){
+string keypadArr[] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+void keypad(string s,string ans){
     if(s.length() == 0){
         cout<<ans<<endl;
         return;
     }
     char ch = s[0];
-    int code = ch;
+    string code = keypadArr[ch-'0'];
+
     string ros = s.substr(1);
 
-    subseq(ros,ans);
-    subseq(ros,ans+ch);
-    subseq(ros,ans+to_string(code));
+    for(int i = 0; i<code.length(); i++){
+        keypad(ros,ans+code[i]);
+    }
+
 }
 
 int main(){
-    subseq("ab","");
+    keypad("23","");
     return 0;
 }

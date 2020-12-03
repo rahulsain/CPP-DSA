@@ -2,63 +2,32 @@
 
 using namespace std;
 
-void quick(int arr[], int l, int m, int r)
-{
-    int n1 = m - l + 1;
-    int n2 = r - m;
-    int a[n1];
-    int b[n2];
+void swap(int a[],int i,int j){
+    int temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
+}
 
-    for (int i = 0; i < n1; i++)
-    {
-        a[i] = arr[l + i];
-    }
-    for (int i = 0; i < n2; i++)
-    {
-        b[i] = arr[m + i + 1];
-    }
-    int i = 0;
-    int j = 0;
-    int k = l;
-    while (i < n1 && j < n2)
-    {
-        if (a[i] < b[i])
-        {
-            arr[k] = a[i];
-            k++;
+int partition(int arr[], int l, int r)
+{
+    int pivot = arr[r];
+    int i = l-1;
+    for(int j = l; j<r;j++){
+        if(arr[j] < pivot){
             i++;
+            swap(arr,i,j);
         }
-        else
-        {
-            arr[k] = b[j];
-            k++;
-            j++;
-        }
-    }
-    while (i < n1)
-    {
-        arr[k] = a[i];
-        k++;
-        i++;
-    }
-    while (j < n2)
-    {
-        arr[k] = b[j];
-        k++;
-        j++;
-    }
+    }   
+    swap(arr,i+1,r);
+    return i+1;
 }
 
 void quickSort(int a[], int l, int r)
 {
-
     if (l < r)
-    {
-        int mid = (l + r) / 2;
-        quickSort(a, l, mid);
-        quickSort(a, mid + 1, r);
-
-        quick(a, l, mid, r);
+    {   int pi = partition(a, l, r);
+        quickSort(a, l, pi - 1);
+        quickSort(a, pi + 1, r); 
     }
 }
 

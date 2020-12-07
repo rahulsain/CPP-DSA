@@ -2,8 +2,10 @@
 
 using namespace std;
 
-void merge(int arr[], int l, int m, int r)
-{
+
+
+long long merge(int arr[], int l, int m, int r)
+{   long long inv = 0;
     int n1 = m - l + 1;
     int n2 = r - m;
     int a[n1];
@@ -22,7 +24,7 @@ void merge(int arr[], int l, int m, int r)
     int k = l;
     while (i < n1 && j < n2)
     {
-        if (a[i] < b[j])
+        if (a[i] <= b[j])
         {
             arr[k] = a[i];
             k++;
@@ -31,6 +33,7 @@ void merge(int arr[], int l, int m, int r)
         else
         {
             arr[k] = b[j];
+            inv += n1 - i;
             k++;
             j++;
         }
@@ -47,31 +50,34 @@ void merge(int arr[], int l, int m, int r)
         k++;
         j++;
     }
+    return inv;
 }
 
-void mergeSort(int a[], int l, int r)
-{
+long long mergeSort(int a[], int l, int r)
+{   long long inv = 0;
 
     if (l < r)
     {
         int mid = (l + r) / 2;
-        mergeSort(a, l, mid);
-        mergeSort(a, mid + 1, r);
+        inv += mergeSort(a, l, mid);
+        inv += mergeSort(a, mid + 1, r);
 
-        merge(a, l, mid, r);
+        inv += merge(a, l, mid, r);
     }
+    return inv;
 }
 
 int main()
 {
-
-    int a[] = {5, 4, 3, 2, 1, -1};
-    mergeSort(a, 0, 5);
-    for (int i = 0; i < 6; i++)
+    int n; cin>>n;
+    int a[n];
+    for (int i = 0; i < n; i++)
     {
-        cout << a[i] << " ";
+        cin >> a[i];
     }
-    cout << endl;
+    
+    
+    cout << mergeSort(a, 0, n-1);
 
     return 0;
-}
+} 

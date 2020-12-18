@@ -39,7 +39,7 @@ void display(node* head){
     }
     cout<<"NULL"<<endl;
 }
-
+//try implementing binary search, if possible
 bool linearSearch(node* &head,int key){
     node* temp = head;
     while(temp != NULL){

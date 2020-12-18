@@ -19,9 +19,8 @@ void insertAtHead(node* &head,int data){
 }
 
 void insertAtTail(node* &head,int data){
-    node* temp = new node(data);
     if(head == NULL){
-        head = temp;
+        insertAtHead(head,data);
         return;
     }
     node* temp = head;
@@ -40,7 +39,7 @@ void display(node* head){
     cout<<"NULL"<<endl;
 }
 //try implementing binary search, if possible
-bool linearSearch(node* &head,int key){
+bool linearSearch(node* head,int key){
     node* temp = head;
     while(temp != NULL){
         if(temp->data == key){
@@ -52,8 +51,14 @@ bool linearSearch(node* &head,int key){
 }
 
 int main(){
-
-        
-
+    node* n1 = NULL;        
+    insertAtTail(n1,11);
+    insertAtTail(n1,12);
+    insertAtTail(n1,13);
+    display(n1);
+    insertAtHead(n1,14);
+    insertAtHead(n1,15);
+    display(n1);
+    cout<<linearSearch(n1,13);
     return 0;
 }

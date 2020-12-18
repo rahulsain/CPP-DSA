@@ -19,15 +19,16 @@ void insertAtHead(node* &head,int data){
 }
 
 void insertAtTail(node* &head,int data){
+    node* temp1 = new node(data);
     if(head == NULL){
-        insertAtHead(head,data);
+        head = temp1;
         return;
     }
     node* temp = head;
     while(temp->next != NULL){
         temp = temp->next;
     }
-    temp->next = temp;
+    temp->next = temp1;
 }
 
 void display(node* head){

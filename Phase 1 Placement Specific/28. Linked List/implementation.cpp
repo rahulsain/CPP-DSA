@@ -31,6 +31,31 @@ void insertAtTail(node* &head,int data){
     temp->next = temp1;
 }
 
+void deleteAtHead(node* &head){
+    node* todelete = head;
+    head = head->next;
+    delete todelete;
+}
+
+void deleteAtTail(node* &head,int val){
+    if(head == NULL){
+        cout<<"List is empty"<<endl;
+        return;
+    }
+    else if(head->next == NULL){
+        cout<<"List is now empty"<<endl;
+        deleteAtHead(head);
+        return;
+    }
+    node* temp = head;
+    while(temp->next->data != val){
+        temp = temp ->next;
+    }
+    node* todelete = temp -> next;
+    temp -> next = temp -> next -> next;
+    delete todelete;
+}
+
 void display(node* head){
     node* temp = head;
     while(temp != NULL){
@@ -60,6 +85,18 @@ int main(){
     insertAtHead(n1,14);
     insertAtHead(n1,15);
     display(n1);
-    cout<<linearSearch(n1,13);
+    cout<<linearSearch(n1,13)<<endl;
+    deleteAtHead(n1);
+    display(n1);
+    deleteAtTail(n1,13);
+    display(n1);
+    deleteAtHead(n1);
+    display(n1);
+    deleteAtTail(n1,12);
+    display(n1);
+    deleteAtTail(n1,11);
+    display(n1);
+    deleteAtTail(n1,11);
+    display(n1);
     return 0;
 }

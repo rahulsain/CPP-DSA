@@ -56,6 +56,29 @@ void deleteAtTail(node* &head,int val){
     delete todelete;
 }
 
+node* reverse(node* &head) {
+    node* prevptr = NULL;
+    node* curptr = head;
+    node* nextptr;
+    while(curptr != NULL){
+        nextptr = curptr ->next;
+        curptr -> next = prevptr;
+        prevptr = curptr;
+        curptr = nextptr;
+    }
+    return prevptr;
+}
+
+node* reverseRecursive(node* &head) {
+    if(head == NULL || head -> next == NULL){
+        return head;
+    }
+    node* newhead = reverseRecursive(head -> next);
+    head -> next ->next = head;
+    head -> next = NULL;
+    return newhead;
+}
+
 void display(node* head){
     node* temp = head;
     while(temp != NULL){
@@ -86,17 +109,13 @@ int main(){
     insertAtHead(n1,15);
     display(n1);
     cout<<linearSearch(n1,13)<<endl;
-    deleteAtHead(n1);
-    display(n1);
-    deleteAtTail(n1,13);
-    display(n1);
-    deleteAtHead(n1);
-    display(n1);
-    deleteAtTail(n1,12);
-    display(n1);
-    deleteAtTail(n1,11);
-    display(n1);
-    deleteAtTail(n1,11);
+    // deleteAtHead(n1);
+    // display(n1);
+    // deleteAtTail(n1,13);
+    // display(n1);
+    node* newhead = reverse(n1);
+    display(newhead);
+    n1 = reverseRecursive(newhead);
     display(n1);
     return 0;
 }

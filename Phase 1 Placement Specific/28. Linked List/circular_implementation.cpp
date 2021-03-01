@@ -102,7 +102,7 @@ int main(){
     insertAtTail(head,1);
     insertAtTail(head,2);
     insertAtTail(head,3);
-    insertAtTail(head,4);
+    insertAtHead(head,4);
     display(head);
     insertAtHead(head,5);
     display(head);

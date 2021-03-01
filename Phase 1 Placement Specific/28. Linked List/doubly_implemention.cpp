@@ -54,7 +54,9 @@ void display(node* head) {
 }
  
 void deleteAtHead(node* &head) {
- 
+    if(head == NULL){
+        return;
+    } 
     node* todelete = head;
     head = head->next;
     head->prev = NULL;
@@ -82,10 +84,8 @@ void deletion(node* &head, int pos) {
     if (temp->next != NULL) {
         temp->next->prev = temp->prev;
     }
- 
- 
+
     delete temp;
- 
 }
  
 int main() {

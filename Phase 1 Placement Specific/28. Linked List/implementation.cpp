@@ -79,6 +79,24 @@ node* reverseRecursive(node* &head) {
     return newhead;
 }
 
+node* reversek(node* &head,int k){
+    node* curptr = head;
+    node* prevptr = NULL;
+    node* nextptr;
+    int count = 0;
+    while(curptr != NULL && count < k){
+        nextptr = curptr -> next;
+        curptr ->next = prevptr;
+        prevptr = curptr;
+        curptr = nextptr;
+        count++;
+    }
+    if(nextptr!= NULL){
+        head ->next = reversek(nextptr,k);
+    }
+    return prevptr; 
+}
+
 void display(node* head){
     node* temp = head;
     while(temp != NULL){
@@ -117,5 +135,7 @@ int main(){
     display(newhead);
     n1 = reverseRecursive(newhead);
     display(n1);
+    newhead = reversek(n1,2);
+    display(newhead);
     return 0;
 }
